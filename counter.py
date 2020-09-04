@@ -37,6 +37,9 @@ image = Image.new('1', (display.width, display.height))
 font = ImageFont.load_default()
 draw = ImageDraw.Draw(image)
 
+# Settings
+single_lap_distance = 2.5
+
 was_closed = GPIO.input(BTN_PIN)
 first_lap = True
 last_lap = 0
@@ -53,15 +56,16 @@ while not should_close:
         last_lap_delta = new_time - last_lap
         last_lap = new_time
         lap_count += 1
-        distance = lap_count * 2.5
+        distance = lap_count * single_lap_distance
         GPIO.output(LAP_PIN, GPIO.HIGH)
         lap_on = True
 
         draw.rectangle((0, 0, display.width, display.height), outline=0, fill=0)
-        draw.text((0, 0), "LAP: " + str(last_lap_delta),  font=font, fill=255)
+        draw.text((0, 0), "LAP NUM: " + str(lap_count),  font=font, fill=255)
+        draw.text((0, 8), "LAP: " + str(single_lap_distance / last_lap),  font=font, fill=255)
         if lap_count > 0:
-            draw.text((0, 8), "SPEED: " + str(lap_count),  font=font, fill=255)
-            draw.text((0, 16), "DIST: " + str(distance),  font=font, fill=255)
+            draw.text((0, 16), "SPEED: " + str(lap_count),  font=font, fill=255)
+            draw.text((0, 24), "DIST: " + str(distance),  font=font, fill=255)
         display.image(image)
         display.display()
 
