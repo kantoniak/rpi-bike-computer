@@ -53,7 +53,7 @@ while not should_close:
         last_lap_delta = new_time - last_lap
         last_lap = new_time
         lap_count += 1
-        distance += lap_count * 2.5
+        distance = lap_count * 2.5
         GPIO.output(LAP_PIN, GPIO.HIGH)
         lap_on = True
 
