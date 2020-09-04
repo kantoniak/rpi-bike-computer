@@ -39,7 +39,7 @@ draw = ImageDraw.Draw(image)
 top = -2
 
 # Settings
-single_lap_distance = 25
+single_lap_distance = 2.5
 
 was_closed = GPIO.input(BTN_PIN)
 first_lap = True
