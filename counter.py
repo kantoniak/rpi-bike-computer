@@ -27,7 +27,7 @@ GPIO.setup(BTN_PIN, GPIO.IN)
 GPIO.setup(LAP_PIN, GPIO.OUT, initial=GPIO.LOW)
 
 # Display
-display = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+display = Adafruit_SSD1306.SSD1306_128_32(rst=None)
 display.begin()
 display.clear()
 display.display()
