@@ -39,7 +39,7 @@ draw = ImageDraw.Draw(image)
 top = -2
 
 # Settings
-single_lap_distance = 2.5
+laps_per_km = 720
 
 was_closed = GPIO.input(BTN_PIN)
 first_lap = True
@@ -57,7 +57,8 @@ while not should_close:
         last_lap_delta = new_time - last_lap
         last_lap = new_time
         lap_count += 1
-        distance = lap_count * single_lap_distance
+        distance = lap_count / laps_per_km
+        speed = 3600 / laps_per_km / last_lap_delta
         GPIO.output(LAP_PIN, GPIO.HIGH)
         lap_on = True
 
@@ -65,7 +66,7 @@ while not should_close:
         draw.text((0, top), "LAP NUM: " + str(lap_count),  font=font, fill=255)
         draw.text((0, top+8), "LAP: " + str(last_lap_delta),  font=font, fill=255)
         if lap_count > 0:
-            draw.text((0, top+16), "SPEED: " + str(single_lap_distance / last_lap_delta),  font=font, fill=255)
+            draw.text((0, top+16), "SPEED: " + str(speed),  font=font, fill=255)
             draw.text((0, top+24), "DIST: " + str(distance),  font=font, fill=255)
         display.image(image)
         display.display()
