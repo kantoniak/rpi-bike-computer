@@ -46,7 +46,7 @@ while not should_close:
 
     if (was_closed and not closed):
         new_time = time.time()
-        print('LAP: ' + str(new_time - last_lap)
+        print('LAP: ' + str(new_time - last_lap))
         last_lap = new_time
         GPIO.output(LAP_PIN, GPIO.HIGH)
         lap_on = True
