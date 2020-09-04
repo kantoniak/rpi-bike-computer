@@ -36,6 +36,7 @@ display.display()
 image = Image.new('1', (display.width, display.height))
 font = ImageFont.load_default()
 draw = ImageDraw.Draw(image)
+top = -2
 
 # Settings
 single_lap_distance = 2.5
@@ -61,11 +62,11 @@ while not should_close:
         lap_on = True
 
         draw.rectangle((0, 0, display.width, display.height), outline=0, fill=0)
-        draw.text((0, 0), "LAP NUM: " + str(lap_count),  font=font, fill=255)
-        draw.text((0, 8), "LAP: " + str(single_lap_distance / last_lap),  font=font, fill=255)
+        draw.text((0, top), "LAP NUM: " + str(lap_count),  font=font, fill=255)
+        draw.text((0, top+8), "LAP: " + str(last_lap),  font=font, fill=255)
         if lap_count > 0:
-            draw.text((0, 16), "SPEED: " + str(lap_count),  font=font, fill=255)
-            draw.text((0, 24), "DIST: " + str(distance),  font=font, fill=255)
+            draw.text((0, top+16), "SPEED: " + str(single_lap_distance / last_lap),  font=font, fill=255)
+            draw.text((0, top+24), "DIST: " + str(distance),  font=font, fill=255)
         display.image(image)
         display.display()
 
