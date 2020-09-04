@@ -35,6 +35,7 @@ display.display()
 # Drawing setup
 image = Image.new('1', (display.width, display.height))
 font = ImageFont.load_default()
+draw = ImageDraw.Draw(image)
 
 was_closed = GPIO.input(BTN_PIN)
 first_lap = True
