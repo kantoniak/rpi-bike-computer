@@ -31,7 +31,10 @@ display = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
 display.begin()
 display.clear()
 display.display()
+
+# Drawing setup
 image = Image.new('1', (display.width, display.height))
+font = ImageFont.load_default()
 
 was_closed = GPIO.input(BTN_PIN)
 first_lap = True
@@ -48,6 +51,10 @@ while not should_close:
         GPIO.output(LAP_PIN, GPIO.HIGH)
         lap_on = True
 
+        draw.rectangle((0, 0, display.width, display.height), outline=0, fill=0)
+        draw.text((0, 0), "LAP: " + str(last_lap),  font=font, fill=255)
+        draw.text((0, 8), "SPEED: 0",  font=font, fill=255)
+        draw.text((0, 16), "DIST: 0",  font=font, fill=255)
         disp.image(image)
         disp.display()
 
