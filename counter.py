@@ -16,9 +16,9 @@ signal.signal(signal.SIGINT, handle_signals)
 signal.signal(signal.SIGTERM, handle_signals)
 
 # Diode pins
-LED_PIN = 17
-BTN_PIN = 27
-LAP_PIN = 4
+BTN_PIN = 22 # Out from bike
+LED_PIN = 17 # Red LED
+LAP_PIN = 27 # Green LED
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
