@@ -56,8 +56,8 @@ while not should_close:
         draw.text((0, 0), "LAP: " + str(last_lap),  font=font, fill=255)
         draw.text((0, 8), "SPEED: 0",  font=font, fill=255)
         draw.text((0, 16), "DIST: 0",  font=font, fill=255)
-        disp.image(image)
-        disp.display()
+        display.image(image)
+        display.display()
 
     if lap_on:
         delta = time.time() - last_lap
