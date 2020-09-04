@@ -63,9 +63,9 @@ while not should_close:
 
         draw.rectangle((0, 0, display.width, display.height), outline=0, fill=0)
         draw.text((0, top), "LAP NUM: " + str(lap_count),  font=font, fill=255)
-        draw.text((0, top+8), "LAP: " + str(last_lap),  font=font, fill=255)
+        draw.text((0, top+8), "LAP: " + str(last_lap_delta),  font=font, fill=255)
         if lap_count > 0:
-            draw.text((0, top+16), "SPEED: " + str(single_lap_distance / last_lap),  font=font, fill=255)
+            draw.text((0, top+16), "SPEED: " + str(single_lap_distance / last_lap_delta),  font=font, fill=255)
             draw.text((0, top+24), "DIST: " + str(distance),  font=font, fill=255)
         display.image(image)
         display.display()
